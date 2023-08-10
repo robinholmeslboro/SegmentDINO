@@ -1,0 +1,1 @@
+This is a project integrating GroundingDINO and Segment-anything to be able to mask any item in a frame with just a prompt. The intended use for myself is masked photogrammetry but it is also applicable to photo or video editing.
