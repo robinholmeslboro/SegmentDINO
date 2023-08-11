@@ -108,6 +108,7 @@ def plot_boxes(image_pil, tgt): #creates bounding boxes around targets
     boxes = tgt["boxes"] #prediction boxes
     labels = tgt["labels"] #box lables
     assert len(boxes) == len(labels), "boxes and labels must have same length" #ensures every box has a label 
+    #print(boxes) #this is some sort of insane ratio of positions maybe in y, hig, x, wid? the output is nonsence
 
     # draw boxes and masks
     for box, label in zip(boxes, labels):
@@ -118,8 +119,10 @@ def plot_boxes(image_pil, tgt): #creates bounding boxes around targets
         box[2:] += box[:2]
         
         x0, y0, x1, y1 = box
-        print(x0, y0, x1, y1)
-        #return box
+        x0, y0, x1, y1 = int(x0), int(y0), int(x1), int(y1)
+        intbox = [x0, y0, x1, y1]
+        print(intbox)
+        return box
 
 if __name__ == "__main__":
 
