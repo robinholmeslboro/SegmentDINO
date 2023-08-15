@@ -1,18 +1,14 @@
-import argparse
-import os
-import sys
+import argparse, os, sys, argparse, json, torch, cv2, torchvision
 
+from typing import Any, Dict, List
 import numpy as np
-import torch
 from PIL import Image, ImageDraw, ImageFont
-
 import groundingdino.datasets.transforms as T
 from groundingdino.models import build_model
 from groundingdino.util import box_ops
 from groundingdino.util.slconfig import SLConfig
 from groundingdino.util.utils import clean_state_dict, get_phrases_from_posmap
 from groundingdino.util.vl_utils import create_positive_map_from_span
-
 
 def load_image(image_path): #loads image from path
     # load image
@@ -167,4 +163,4 @@ if __name__ == "__main__":
         "labels": pred_phrases,
     }
     # import ipdb; ipdb.set_trace()
-    plot_boxes(image_pil, pred_dict)
+    boxes = plot_boxes(image_pil, pred_dict)
